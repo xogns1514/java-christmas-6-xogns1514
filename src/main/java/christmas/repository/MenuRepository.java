@@ -2,6 +2,7 @@ package christmas.repository;
 
 import christmas.domain.Menu;
 import christmas.domain.MenuCategory;
+import christmas.error.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,13 @@ public class MenuRepository {
 
     public List<Menu> getMenus() {
         return menus;
+    }
+
+    public Menu findByMenuName(String menuName) {
+        return menus.stream()
+                .filter(menu -> menu.getName().equals(menuName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.NOT_FOUND_MENU_ERROR.getMessage()));
     }
 
     private void initMenus() {
