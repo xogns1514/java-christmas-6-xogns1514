@@ -2,20 +2,19 @@ package christmas.domain;
 
 import christmas.error.ErrorMessage;
 import christmas.util.Constant;
-import java.util.List;
 
 public class Order {
 
-    private Menu menus;
+    private Menu menu;
     private int quantity;
 
-    public Order(Menu menus, int quantity) {
-        this.menus = menus;
+    public Order(Menu menu, int quantity) {
+        this.menu = menu;
         this.quantity = quantity;
     }
 
-    public Menu getMenus() {
-        return menus;
+    public Menu getMenu() {
+        return menu;
     }
 
     public int getQuantity() {
