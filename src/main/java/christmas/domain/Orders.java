@@ -17,6 +17,7 @@ public class Orders {
     private void validateOrders(List<Order> orders) {
         checkOnlyBeverage(orders);
         checkOrderCountOverLimit(orders);
+        checkOrdersHasDuplicateMenu(orders);
     }
 
     private void checkOnlyBeverage(List<Order> orders) {
@@ -31,9 +32,15 @@ public class Orders {
         }
     }
 
+    private void checkOrdersHasDuplicateMenu(List<Order> orders) {
+        if (hasDuplicateMenu(orders)) {
+            throw new IllegalArgumentException(ErrorMessage.HAS_DUPLICATE_MENU_ERROR.getMessage());
+        }
+    }
+
     private boolean hasOnlyBeverage(List<Order> orders) {
         return orders.stream()
-                .allMatch(order -> MenuCategory.BEVERAGE == order.getMenus().getCategory());
+                .allMatch(order -> MenuCategory.BEVERAGE == order.getMenu().getCategory());
     }
 
     private boolean isOrderCountOverLimit(List<Order> orders) {
@@ -41,6 +48,13 @@ public class Orders {
                 .mapToInt(Order::getQuantity)
                 .sum();
         return totalOrderCount > Constant.MAX_ORDER;
+    }
+
+    private boolean hasDuplicateMenu(List<Order> orders) {
+        return orders.stream()
+                .map(Order::getMenu)
+                .distinct()
+                .count() != orders.size();
     }
 
 }
