@@ -5,8 +5,8 @@ import christmas.util.Constant;
 
 public class Order {
 
-    private Menu menu;
-    private int quantity;
+    private final Menu menu;
+    private final int quantity;
 
     public Order(Menu menu, int quantity) {
         this.menu = menu;
@@ -19,6 +19,11 @@ public class Order {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %d개", menu.getName(), quantity);
     }
 
     private void checkQuantity(int quantity) {

@@ -14,6 +14,10 @@ public class Orders {
         this.orders = orders;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
     private void validateOrders(List<Order> orders) {
         checkOnlyBeverage(orders);
         checkOrderCountOverLimit(orders);

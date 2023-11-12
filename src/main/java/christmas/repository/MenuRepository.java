@@ -10,7 +10,7 @@ public class MenuRepository {
 
     private final List<Menu> menus;
 
-    public MenuRepository(List<Menu> menus) {
+    public MenuRepository() {
         this.menus = new ArrayList<>();
         initMenus();
     }
