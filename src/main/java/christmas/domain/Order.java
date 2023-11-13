@@ -9,6 +9,8 @@ public class Order {
     private final int quantity;
 
     public Order(Menu menu, int quantity) {
+        validateOrder(quantity);
+
         this.menu = menu;
         this.quantity = quantity;
     }
@@ -24,6 +26,10 @@ public class Order {
     @Override
     public String toString() {
         return String.format("%s %d개", menu.getName(), quantity);
+    }
+
+    private void validateOrder(int quantity) {
+        checkQuantity(quantity);
     }
 
     private void checkQuantity(int quantity) {
