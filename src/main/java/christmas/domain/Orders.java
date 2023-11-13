@@ -24,6 +24,12 @@ public class Orders {
         checkOrdersHasDuplicateMenu(orders);
     }
 
+    public int calculateTotalPrice() {
+        return orders.stream()
+                .mapToInt(Order::getTotalPrice)
+                .sum();
+    }
+
     private void checkOnlyBeverage(List<Order> orders) {
         if (hasOnlyBeverage(orders)) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_BEVERAGE_ORDER_ERROR.getMessage());
