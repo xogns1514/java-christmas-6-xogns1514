@@ -3,7 +3,7 @@ package christmas.domain;
 public class DiscountCalculator {
 
     public static int calculateTotalDiscount(Date date, Orders orders) {
-        return calculateDDayDiscount(date)
+        return calculateDDayDiscount(date, orders)
                 + calculateWeekDayDiscount(date, orders)
                 + calculateWeekendDiscount(date, orders)
                 + calculateSpecialDayDiscount(date, orders)
@@ -14,42 +14,42 @@ public class DiscountCalculator {
         int totalPriceBeforeDiscount = orders.calculateTotalPrice();
 
         return totalPriceBeforeDiscount
-                - calculateDDayDiscount(date)
+                - calculateDDayDiscount(date, orders)
                 - calculateWeekendDiscount(date, orders)
                 - calculateWeekDayDiscount(date, orders)
                 - calculateSpecialDayDiscount(date, orders);
     }
 
-    public static int calculateDDayDiscount(Date date) {
-        if (date.isDDay()) {
+    public static int calculateDDayDiscount(Date date, Orders orders) {
+        if (date.isDDay() && orders.isTotalPriceQualifiedForEvent()) {
             return 1000 + (date.getDay() - 1) * 100;
         }
         return 0;
     }
 
     public static int calculateWeekDayDiscount(Date date, Orders orders) {
-        if (DayType.WEEKDAY == date.getDayType()) {
+        if (DayType.WEEKDAY == date.getDayType() && orders.isTotalPriceQualifiedForEvent()) {
             return orders.countDessertMenu() * 2023;
         }
         return 0;
     }
 
     public static int calculateWeekendDiscount(Date date, Orders orders) {
-        if (DayType.WEEKEND == date.getDayType()) {
+        if (DayType.WEEKEND == date.getDayType() && orders.isTotalPriceQualifiedForEvent()) {
             return orders.countMainMenu() * 2023;
         }
         return 0;
     }
 
     public static int calculateSpecialDayDiscount(Date date, Orders orders) {
-        if (date.isSpecialDay()) {
+        if (date.isSpecialDay() && orders.isTotalPriceQualifiedForEvent()) {
             return 1000;
         }
         return 0;
     }
 
     public static int calculateFreeGift(Orders orders) {
-        if (orders.calculateTotalPrice() >= 120000) {
+        if (orders.calculateTotalPrice() >= 120000 && orders.isTotalPriceQualifiedForEvent()) {
             return 25000;
         }
         return 0;

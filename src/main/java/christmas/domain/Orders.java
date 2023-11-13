@@ -36,6 +36,10 @@ public class Orders {
                 .count();
     }
 
+    public boolean isTotalPriceQualifiedForEvent() {
+        return calculateTotalPrice() >= 10000;
+    }
+
     private void validateOrders(List<Order> orders) {
         checkOnlyBeverage(orders);
         checkOrderCountOverLimit(orders);
