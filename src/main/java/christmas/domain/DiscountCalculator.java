@@ -2,6 +2,14 @@ package christmas.domain;
 
 public class DiscountCalculator {
 
+    public static int calculateTotalDiscount(Date date, Orders orders) {
+        return calculateDDayDiscount(date)
+                + calculateWeekDayDiscount(date, orders)
+                + calculateWeekendDiscount(date, orders)
+                + calculateSpecialDayDiscount(date, orders)
+                + calculateFreeGift(orders);
+    }
+
     public static int calculateDDayDiscount(Date date) {
         if (date.isDDay()) {
             return 1000 + (date.getDay() - 1) * 100;
