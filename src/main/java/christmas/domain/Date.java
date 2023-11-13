@@ -4,12 +4,28 @@ import christmas.error.ErrorMessage;
 
 public class Date {
 
-    private final int date;
+    private final int day;
+    private final DayType dayType;
+    private final boolean isSpecialDay;
 
-    public Date(int date) {
-        validateDate(date);
+    public Date(int day, DayType dayType, boolean isSpecialDay) {
+        this.dayType = dayType;
+        this.isSpecialDay = isSpecialDay;
+        validateDate(day);
 
-        this.date = date;
+        this.day = day;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public DayType getDayType() {
+        return dayType;
+    }
+
+    public boolean isSpecialDay() {
+        return isSpecialDay;
     }
 
     private void validateDate(int date) {
