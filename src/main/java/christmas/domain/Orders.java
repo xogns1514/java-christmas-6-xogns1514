@@ -18,16 +18,28 @@ public class Orders {
         return orders;
     }
 
-    private void validateOrders(List<Order> orders) {
-        checkOnlyBeverage(orders);
-        checkOrderCountOverLimit(orders);
-        checkOrdersHasDuplicateMenu(orders);
-    }
-
     public int calculateTotalPrice() {
         return orders.stream()
                 .mapToInt(Order::getTotalPrice)
                 .sum();
+    }
+
+    public int countDessertMenu() {
+        return (int) orders.stream()
+                .filter(order -> MenuCategory.DESSERT == order.getMenu().getCategory())
+                .count();
+    }
+
+    public int countMainMenu() {
+        return (int) orders.stream()
+                .filter(order -> MenuCategory.MAIN == order.getMenu().getCategory())
+                .count();
+    }
+
+    private void validateOrders(List<Order> orders) {
+        checkOnlyBeverage(orders);
+        checkOrderCountOverLimit(orders);
+        checkOrdersHasDuplicateMenu(orders);
     }
 
     private void checkOnlyBeverage(List<Order> orders) {
