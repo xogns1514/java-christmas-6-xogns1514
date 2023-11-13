@@ -10,6 +10,16 @@ public class DiscountCalculator {
                 + calculateFreeGift(orders);
     }
 
+    public static int calculateTotalPriceAfterDiscount(Date date, Orders orders) {
+        int totalPriceBeforeDiscount = orders.calculateTotalPrice();
+
+        return totalPriceBeforeDiscount
+                - calculateDDayDiscount(date)
+                - calculateWeekendDiscount(date, orders)
+                - calculateWeekDayDiscount(date, orders)
+                - calculateSpecialDayDiscount(date, orders);
+    }
+
     public static int calculateDDayDiscount(Date date) {
         if (date.isDDay()) {
             return 1000 + (date.getDay() - 1) * 100;
