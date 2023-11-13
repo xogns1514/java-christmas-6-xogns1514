@@ -22,4 +22,18 @@ public class DiscountCalculator {
         }
         return 0;
     }
+
+    public static int calculateSpecialDayDiscount(Date date, Orders orders) {
+        if (date.isSpecialDay()) {
+            return 1000;
+        }
+        return 0;
+    }
+
+    public static int calculateFreeGift(Orders orders) {
+        if (orders.calculateTotalPrice() >= 120000) {
+            return 25000;
+        }
+        return 0;
+    }
 }
