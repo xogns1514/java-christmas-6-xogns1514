@@ -28,6 +28,10 @@ public class Date {
         return isSpecialDay;
     }
 
+    public boolean isDDay() {
+        return 1 <= day && day <= 25;
+    }
+
     private void validateDate(int date) {
         checkValidDate(date);
     }
