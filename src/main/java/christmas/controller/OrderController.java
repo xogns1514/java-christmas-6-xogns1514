@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Orders;
 import christmas.service.OrderService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -13,8 +14,13 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    public void inputOrders() {
-        String inputOrders = InputView.inputOrder();
-        OutputView.outputOrders(orderService.createOrders(inputOrders));
+    public Orders inputOrders() {
+        try {
+            String inputOrders = InputView.inputOrder();
+            return orderService.createOrders(inputOrders);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return inputOrders();
+        }
     }
 }
