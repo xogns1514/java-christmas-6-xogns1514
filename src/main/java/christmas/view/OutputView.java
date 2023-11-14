@@ -74,7 +74,7 @@ public class OutputView {
 
     public static void outputTotalBenefitAmount(int totalBenefitAmount) {
         System.out.println(OutputMessage.OUTPUT_TOTAL_BENEFIT_AMOUNT_MESSAGE.message);
-        outputMinusMoney(totalBenefitAmount);
+        outputMoney(totalBenefitAmount * -1);
         System.out.println();
     }
 
@@ -96,9 +96,5 @@ public class OutputView {
 
     private static void outputMoney(int money) {
         System.out.printf(OutputMessage.OUTPUT_PRICE.message, formatter.format(money));
-    }
-
-    private static void outputMinusMoney(int money) {
-        System.out.printf(OutputMessage.OUTPUT_MINUS_PRICE.message, formatter.format(money));
     }
 }
