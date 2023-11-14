@@ -14,6 +14,7 @@ public class OutputView {
         OUTPUT_DISCOUNT_BENEFITS_MESSAGE("<혜택 내역>"),
         OUTPUT_TOTAL_BENEFIT_AMOUNT_MESSAGE("<총혜택 금액>"),
         OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT_MESSAGE("<할인 후 예상 결제 금액>"),
+        OUTPUT_BADGE_MESSAGE("<12월 이벤트 배지>"),
         OUTPUT_DECIMAL_FORMAT("###,###"),
         OUTPUT_PRICE("%s원\n"),
         OUTPUT_DISCOUNT_MESSAGE("%s: -%s원\n"),
@@ -61,6 +62,11 @@ public class OutputView {
     public static void outputTotalPriceAfterDiscount(int totalPriceAfterDiscount) {
         System.out.println(OutputMessage.OUTPUT_TOTAL_PRICE_AFTER_DISCOUNT_MESSAGE.message);
         outputMoney(totalPriceAfterDiscount);
+    }
+
+    public static void outputBadge(String badge) {
+        System.out.println(OutputMessage.OUTPUT_BADGE_MESSAGE);
+        System.out.println(badge);
     }
 
     public static void outputEmpty() {
