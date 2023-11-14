@@ -21,9 +21,9 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static int inputDate() {
+    public static String inputDate() {
         System.out.println(InputMessage.INPUT_DATE_MESSAGE.message);
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
 

@@ -5,8 +5,10 @@ import christmas.domain.Date;
 import christmas.domain.DiscountCalculator;
 import christmas.domain.DiscountRule;
 import christmas.domain.Orders;
+import christmas.error.ErrorMessage;
 import christmas.repository.DateRepository;
 import christmas.service.OrderService;
+import christmas.util.valid.InputValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.Map;
@@ -48,6 +50,7 @@ public class OrderController {
     private Orders inputOrders() {
         try {
             String inputOrders = InputView.inputOrder();
+            InputValidator.validateOrderInput(inputOrders, ErrorMessage.INVALID_ORDER_INPUT_ERROR.getMessage());
             return orderService.createOrders(inputOrders);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -57,8 +60,9 @@ public class OrderController {
 
     private christmas.domain.Date inputDate() {
         try {
-            int day = InputView.inputDate();
-            return dateRepository.findBydate(day);
+            String day = InputView.inputDate();
+            InputValidator.validateDateInput(day, ErrorMessage.INVALID_DATE_ERROR.getMessage());
+            return dateRepository.findBydate(Integer.parseInt(day));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return inputDate();
