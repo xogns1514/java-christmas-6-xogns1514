@@ -62,8 +62,8 @@ public class OrderController {
 
     private Day inputDate() {
         try {
-            String day = InputView.inputDate();
-            InputValidator.validateDateInput(day, ErrorMessage.INVALID_DATE_ERROR.getMessage());
+            String day = InputView.inputDay();
+            InputValidator.validateDayInput(day, ErrorMessage.INVALID_DATE_ERROR.getMessage());
             return dateRepository.findBydate(Integer.parseInt(day));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

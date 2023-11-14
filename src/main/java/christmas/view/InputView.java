@@ -21,7 +21,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String inputDate() {
+    public static String inputDay() {
         System.out.println(InputMessage.INPUT_DATE_MESSAGE.message);
         return Console.readLine();
     }

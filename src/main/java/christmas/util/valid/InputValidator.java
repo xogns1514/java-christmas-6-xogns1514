@@ -8,7 +8,7 @@ public class InputValidator {
     private static final String MENU_QUANTITY_REGEX = "^[^,]+-\\d+(?:,[^,]+-\\d+)*$";
 
 
-    public static void validateDateInput(String input, String errorMessage) {
+    public static void validateDayInput(String input, String errorMessage) {
         checkInputEmpty(input, errorMessage);
         checkInputIsNumeric(input, errorMessage);
     }
