@@ -39,7 +39,7 @@ public class DateRepository {
     }
 
     private boolean isWeekend(int day) {
-        return day % 7 == 2 || day % 7 == 3;
+        return day % 7 == 1 || day % 7 == 2;
     }
 
     private boolean isSpecialDay(int day) {
