@@ -13,7 +13,7 @@ public class OutputView {
         OUTPUT_PRICE("%s원\n"),
         OUTPUT_DECIMAL_FORMAT("###,###"),
         OUTPUT_DISCOUNT_BENEFITS("<혜택 내역>"),
-        OUTPUT_DISCOUNT("%s: -%d원\n"),
+        OUTPUT_DISCOUNT("%s: -%s원\n"),
         OUTPUT_EMPTY_MESSAGE("없음");
 
         private final String message;
@@ -43,10 +43,10 @@ public class OutputView {
             return;
         }
         benefitResult.forEach((discountName, discountAmount) ->
-                System.out.printf(OutputMessage.OUTPUT_DISCOUNT.message, discountName, discountAmount));
+                System.out.printf(OutputMessage.OUTPUT_DISCOUNT.message, discountName, formatter.format(discountAmount)));
     }
 
     public static void outputEmpty() {
-        System.out.println(OutputMessage.OUTPUT_EMPTY_MESSAGE);
+        System.out.println(OutputMessage.OUTPUT_EMPTY_MESSAGE.message);
     }
 }
