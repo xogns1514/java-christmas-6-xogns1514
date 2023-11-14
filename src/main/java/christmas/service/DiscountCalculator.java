@@ -30,34 +30,34 @@ public class DiscountCalculator {
         if (day.isDDay() && orders.isTotalPriceQualifiedForEvent()) {
             return THOUSAND + (day.getDay() - FIRST_DAY) * HUNDRED;
         }
-        return 0;
+        return ZERO;
     }
 
     public static int calculateWeekDayDiscount(Day day, Orders orders) {
         if (DayType.WEEKDAY == day.getDayType() && orders.isTotalPriceQualifiedForEvent()) {
             return orders.countDessertMenu() * DAY_DISCOUNT;
         }
-        return 0;
+        return ZERO;
     }
 
     public static int calculateWeekendDiscount(Day day, Orders orders) {
         if (DayType.WEEKEND == day.getDayType() && orders.isTotalPriceQualifiedForEvent()) {
             return orders.countMainMenu() * DAY_DISCOUNT;
         }
-        return 0;
+        return ZERO;
     }
 
     public static int calculateSpecialDayDiscount(Day day, Orders orders) {
         if (day.isSpecialDay() && orders.isTotalPriceQualifiedForEvent()) {
             return THOUSAND;
         }
-        return 0;
+        return ZERO;
     }
 
     public static int calculateFreeGift(Day day, Orders orders) {
         if (orders.calculateTotalPrice() >= MIN_FREE_GIFT_PRICE && orders.isTotalPriceQualifiedForEvent()) {
             return FREE_GIFT_PRICE;
         }
-        return 0;
+        return ZERO;
     }
 }
