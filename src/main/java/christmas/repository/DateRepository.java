@@ -1,5 +1,7 @@
 package christmas.repository;
 
+import static christmas.util.Constant.*;
+
 import christmas.domain.Date;
 import christmas.domain.DayType;
 import christmas.error.ErrorMessage;
@@ -23,7 +25,7 @@ public class DateRepository {
     }
 
     private void initDates() {
-        for (int day = 1; day <= 31; day++) {
+        for (int day = FIRST_DAY; day <= LAST_DAY; day++) {
             DayType dayType = getDayType(day);
             boolean specialDay = isSpecialDay(day);
 
@@ -39,10 +41,10 @@ public class DateRepository {
     }
 
     private boolean isWeekend(int day) {
-        return day % 7 == 1 || day % 7 == 2;
+        return day % DAYS_IN_WEEK == ONE || day % 7 == TWO;
     }
 
     private boolean isSpecialDay(int day) {
-        return day % 7 == 3 || day == 25;
+        return day % DAYS_IN_WEEK == THREE || day == CHRISTMAS_DAY;
     }
 }

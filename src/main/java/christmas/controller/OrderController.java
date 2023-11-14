@@ -1,5 +1,7 @@
 package christmas.controller;
 
+import static christmas.util.Constant.*;
+
 import christmas.domain.Badge;
 import christmas.domain.Date;
 import christmas.domain.DiscountCalculator;
@@ -71,7 +73,7 @@ public class OrderController {
 
     private void outputFreeGift(int totalPriceBeforeDiscount) {
         OutputView.outputFreeGift();
-        if (totalPriceBeforeDiscount < 120_000) {
+        if (totalPriceBeforeDiscount < MIN_FREE_GIFT_PRICE) {
             OutputView.outputEmpty();
             return;
         }

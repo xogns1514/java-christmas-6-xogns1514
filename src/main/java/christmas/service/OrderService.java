@@ -1,5 +1,7 @@
 package christmas.service;
 
+import static christmas.util.Constant.*;
+
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.Orders;
@@ -30,8 +32,8 @@ public class OrderService {
     private Order createOrder(String inputOrder) {
         List<String> menuAndQuantity = Converter.splitWithHyphen(inputOrder);
 
-        String menuName = menuAndQuantity.get(0).trim();
-        int quantity = Integer.parseInt(menuAndQuantity.get(1).trim());
+        String menuName = menuAndQuantity.get(ZERO).trim();
+        int quantity = Integer.parseInt(menuAndQuantity.get(ONE).trim());
 
         Menu menu = repository.findByMenuName(menuName);
 

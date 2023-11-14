@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.util.Constant.MIN_EVENT_QUALIFIED_PRICE;
+
 import christmas.error.ErrorMessage;
 import christmas.util.Constant;
 
@@ -39,7 +41,7 @@ public class Orders {
     }
 
     public boolean isTotalPriceQualifiedForEvent() {
-        return calculateTotalPrice() >= 10000;
+        return calculateTotalPrice() >= MIN_EVENT_QUALIFIED_PRICE;
     }
 
     private void validateOrders(List<Order> orders) {

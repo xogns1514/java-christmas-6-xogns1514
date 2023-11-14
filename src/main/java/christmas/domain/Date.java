@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.util.Constant.*;
+
 import christmas.error.ErrorMessage;
 
 public class Date {
@@ -29,7 +31,7 @@ public class Date {
     }
 
     public boolean isDDay() {
-        return 1 <= day && day <= 25;
+        return FIRST_DAY <= day && day <= CHRISTMAS_DAY;
     }
 
     private void validateDate(int date) {
@@ -43,6 +45,6 @@ public class Date {
     }
 
     private boolean isNotValidDate(int date) {
-        return date < 1 || date > 31;
+        return date < FIRST_DAY || date > LAST_DAY;
     }
 }
