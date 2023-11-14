@@ -16,6 +16,7 @@ public class Constant {
     public static final int CHRISTMAS_DAY = 25;
     public static final int DAY_DISCOUNT = 2023;
 
+    public static final int MINUS = -1;
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int TWO = 2;

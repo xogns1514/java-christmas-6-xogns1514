@@ -1,5 +1,7 @@
 package christmas.view;
 
+import static christmas.util.Constant.*;
+
 import christmas.domain.Day;
 import christmas.domain.Orders;
 import java.text.DecimalFormat;
@@ -74,7 +76,7 @@ public class OutputView {
 
     public static void outputTotalBenefitAmount(int totalBenefitAmount) {
         System.out.println(OutputMessage.OUTPUT_TOTAL_BENEFIT_AMOUNT_MESSAGE.message);
-        outputMoney(totalBenefitAmount * -1);
+        outputMoney(totalBenefitAmount * MINUS);
         System.out.println();
     }
 
