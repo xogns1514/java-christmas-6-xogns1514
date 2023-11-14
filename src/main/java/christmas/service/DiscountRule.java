@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.domain.Date;
+import christmas.domain.Day;
 import christmas.domain.Orders;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,10 +17,10 @@ public enum DiscountRule {
 
 
     private final String discountName;
-    private final BiFunction<Date, Orders, Integer> calculator;
+    private final BiFunction<Day, Orders, Integer> calculator;
 
 
-    DiscountRule(String discountName, BiFunction<Date, Orders, Integer> calculator) {
+    DiscountRule(String discountName, BiFunction<Day, Orders, Integer> calculator) {
         this.discountName = discountName;
         this.calculator = calculator;
     }
@@ -29,24 +29,24 @@ public enum DiscountRule {
         return discountName;
     }
 
-    public int calculateDiscount(Date date, Orders orders) {
-        return calculator.apply(date, orders);
+    public int calculateDiscount(Day day, Orders orders) {
+        return calculator.apply(day, orders);
     }
 
-    public static Map<String, Integer> calculateAllDiscount(Date date, Orders orders) {
+    public static Map<String, Integer> calculateAllDiscount(Day day, Orders orders) {
         Map<String, Integer> discountResult = new HashMap<>();
 
         Stream.of(values())
-                .filter(rule -> hasDiscount(rule, date, orders))
-                .forEach(rule -> addDiscountToMap(rule, date, orders, discountResult));
+                .filter(rule -> hasDiscount(rule, day, orders))
+                .forEach(rule -> addDiscountToMap(rule, day, orders, discountResult));
         return discountResult;
     }
 
-    private static boolean hasDiscount(DiscountRule rule, Date date, Orders orders) {
-        return rule.calculateDiscount(date, orders) != 0;
+    private static boolean hasDiscount(DiscountRule rule, Day day, Orders orders) {
+        return rule.calculateDiscount(day, orders) != 0;
     }
 
-    private static void addDiscountToMap(DiscountRule rule, Date date, Orders orders, Map<String, Integer> benefits) {
-        benefits.put(rule.getDiscountName(), rule.calculateDiscount(date, orders));
+    private static void addDiscountToMap(DiscountRule rule, Day day, Orders orders, Map<String, Integer> benefits) {
+        benefits.put(rule.getDiscountName(), rule.calculateDiscount(day, orders));
     }
 }

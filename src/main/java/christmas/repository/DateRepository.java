@@ -2,7 +2,7 @@ package christmas.repository;
 
 import static christmas.util.Constant.*;
 
-import christmas.domain.Date;
+import christmas.domain.Day;
 import christmas.domain.DayType;
 import christmas.error.ErrorMessage;
 import java.util.ArrayList;
@@ -10,15 +10,15 @@ import java.util.List;
 
 public class DateRepository {
 
-    private final List<Date> dates;
+    private final List<Day> days;
 
     public DateRepository() {
-        this.dates = new ArrayList<>();
+        this.days = new ArrayList<>();
         initDates();
     }
 
-    public Date findBydate(int day) {
-        return dates.stream()
+    public Day findBydate(int day) {
+        return days.stream()
                 .filter(date -> date.getDay() == day)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.INVALID_DATE_ERROR.getMessage()));
@@ -29,7 +29,7 @@ public class DateRepository {
             DayType dayType = getDayType(day);
             boolean specialDay = isSpecialDay(day);
 
-            dates.add(new Date(day, dayType, specialDay));
+            days.add(new Day(day, dayType, specialDay));
         }
     }
 

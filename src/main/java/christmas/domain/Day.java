@@ -4,13 +4,13 @@ import static christmas.util.Constant.*;
 
 import christmas.error.ErrorMessage;
 
-public class Date {
+public class Day {
 
     private final int day;
     private final DayType dayType;
     private final boolean isSpecialDay;
 
-    public Date(int day, DayType dayType, boolean isSpecialDay) {
+    public Day(int day, DayType dayType, boolean isSpecialDay) {
         this.dayType = dayType;
         this.isSpecialDay = isSpecialDay;
         validateDate(day);

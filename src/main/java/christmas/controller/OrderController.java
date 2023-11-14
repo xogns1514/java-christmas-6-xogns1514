@@ -3,7 +3,7 @@ package christmas.controller;
 import static christmas.util.Constant.*;
 
 import christmas.domain.Badge;
-import christmas.domain.Date;
+import christmas.domain.Day;
 import christmas.service.DiscountCalculator;
 import christmas.service.DiscountRule;
 import christmas.domain.Orders;
@@ -28,11 +28,11 @@ public class OrderController {
 
     public void run() {
         // Intro 및 날짜 입력
-        Date date = inputDate();
+        Day day = inputDate();
 
         // 주문 입력
         Orders orders = inputOrders();
-        OutputView.outputEventIntro(date);
+        OutputView.outputEventIntro(day);
 
         // 주문 메뉴 출력
         OutputView.outputOrders(orders);
@@ -44,7 +44,7 @@ public class OrderController {
         outputFreeGift(orders.calculateTotalPrice());
 
         // 이벤트 내용 출력
-        outputEventBenefits(date, orders);
+        outputEventBenefits(day, orders);
     }
 
 
@@ -60,7 +60,7 @@ public class OrderController {
         }
     }
 
-    private christmas.domain.Date inputDate() {
+    private Day inputDate() {
         try {
             String day = InputView.inputDate();
             InputValidator.validateDateInput(day, ErrorMessage.INVALID_DATE_ERROR.getMessage());
@@ -90,18 +90,18 @@ public class OrderController {
         OutputView.outputDiscountBenefit(benefitResult);
     }
 
-    private void outputEventBenefits(Date date, Orders orders) {
+    private void outputEventBenefits(Day day, Orders orders) {
         // 혜택 내역 출력
-        outputDiscountBenefit(DiscountRule.calculateAllDiscount(date, orders));
+        outputDiscountBenefit(DiscountRule.calculateAllDiscount(day, orders));
 
         // 총혜택 금액 출력
-        OutputView.outputTotalBenefitAmount(DiscountCalculator.calculateTotalDiscount(date, orders));
+        OutputView.outputTotalBenefitAmount(DiscountCalculator.calculateTotalDiscount(day, orders));
 
         // 할인 후 예상 결제 금액 출력
-        OutputView.outputTotalPriceAfterDiscount(DiscountCalculator.calculateTotalPriceAfterDiscount(date, orders));
+        OutputView.outputTotalPriceAfterDiscount(DiscountCalculator.calculateTotalPriceAfterDiscount(day, orders));
 
         // 12월 이벤트 배지 출력
-        OutputView.outputBadge(Badge.getBadge(DiscountCalculator.calculateTotalDiscount(date, orders)));
+        OutputView.outputBadge(Badge.getBadge(DiscountCalculator.calculateTotalDiscount(day, orders)));
     }
 
 }

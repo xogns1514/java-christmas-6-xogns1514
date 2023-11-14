@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.domain.Date;
+import christmas.domain.Day;
 import christmas.domain.Orders;
 import java.text.DecimalFormat;
 import java.util.Map;
@@ -35,8 +35,8 @@ public class OutputView {
 
     private static final DecimalFormat formatter = new DecimalFormat(OutputMessage.OUTPUT_DECIMAL_FORMAT.message);
 
-    public static void outputEventIntro(Date date) {
-        System.out.printf(OutputMessage.OUTPUT_EVENT_INTRO_MESSAGE.message, date.getDay());
+    public static void outputEventIntro(Day day) {
+        System.out.printf(OutputMessage.OUTPUT_EVENT_INTRO_MESSAGE.message, day.getDay());
         System.out.println();
     }
 
