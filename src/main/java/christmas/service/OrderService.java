@@ -13,8 +13,8 @@ public class OrderService {
 
     private final MenuRepository repository;
 
-    public OrderService(MenuRepository repository) {
-        this.repository = repository;
+    public OrderService() {
+        this.repository = new MenuRepository();
     }
 
     public Orders createOrders(String inputOrder) {

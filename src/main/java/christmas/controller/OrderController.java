@@ -17,9 +17,9 @@ public class OrderController {
     private final DateRepository dateRepository;
 
 
-    public OrderController(OrderService orderService, DateRepository dateRepository) {
-        this.orderService = orderService;
-        this.dateRepository = dateRepository;
+    public OrderController() {
+        this.orderService = new OrderService();
+        this.dateRepository = new DateRepository();
     }
 
     public void run() {
