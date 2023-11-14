@@ -35,16 +35,16 @@ public class Day {
     }
 
     private void validateDate(int date) {
-        checkValidDate(date);
+        checkValidDay(date);
     }
 
-    private void checkValidDate(int date) {
-        if (isNotValidDate(date)) {
+    private void checkValidDay(int date) {
+        if (isNotValidDay(date)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_DATE_ERROR.getMessage());
         }
     }
 
-    private boolean isNotValidDate(int date) {
+    private boolean isNotValidDay(int date) {
         return date < FIRST_DAY || date > LAST_DAY;
     }
 }
