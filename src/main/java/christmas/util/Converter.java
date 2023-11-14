@@ -19,5 +19,4 @@ public class Converter {
         return Stream.of(input.split(HYPHEN))
                 .collect(Collectors.toList());
     }
-
 }

@@ -20,7 +20,6 @@ public class OrderController {
     private final OrderService orderService;
     private final DateRepository dateRepository;
 
-
     public OrderController() {
         this.orderService = new OrderService();
         this.dateRepository = new DateRepository();
@@ -46,8 +45,6 @@ public class OrderController {
         // 이벤트 내용 출력
         outputEventBenefits(day, orders);
     }
-
-
 
     private Orders inputOrders() {
         try {
@@ -103,5 +100,4 @@ public class OrderController {
         // 12월 이벤트 배지 출력
         OutputView.outputBadge(Badge.getBadge(DiscountCalculator.calculateTotalDiscount(day, orders)));
     }
-
 }
