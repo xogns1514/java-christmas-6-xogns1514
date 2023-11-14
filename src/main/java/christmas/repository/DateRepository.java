@@ -41,7 +41,7 @@ public class DateRepository {
     }
 
     private boolean isWeekend(int day) {
-        return day % DAYS_IN_WEEK == ONE || day % 7 == TWO;
+        return day % DAYS_IN_WEEK == ONE || day % DAYS_IN_WEEK == TWO;
     }
 
     private boolean isSpecialDay(int day) {
