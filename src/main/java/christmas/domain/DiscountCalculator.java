@@ -7,7 +7,7 @@ public class DiscountCalculator {
                 + calculateWeekDayDiscount(date, orders)
                 + calculateWeekendDiscount(date, orders)
                 + calculateSpecialDayDiscount(date, orders)
-                + calculateFreeGift(orders);
+                + calculateFreeGift(date, orders);
     }
 
     public static int calculateTotalPriceAfterDiscount(Date date, Orders orders) {
@@ -48,7 +48,7 @@ public class DiscountCalculator {
         return 0;
     }
 
-    public static int calculateFreeGift(Orders orders) {
+    public static int calculateFreeGift(Date date, Orders orders) {
         if (orders.calculateTotalPrice() >= 120000 && orders.isTotalPriceQualifiedForEvent()) {
             return 25000;
         }
