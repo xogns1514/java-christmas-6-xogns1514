@@ -10,7 +10,7 @@ public class DateRepository {
 
     private final List<Date> dates;
 
-    public DateRepository(List<Date> dates) {
+    public DateRepository() {
         this.dates = new ArrayList<>();
         initDates();
     }
