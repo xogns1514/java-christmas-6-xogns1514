@@ -25,15 +25,17 @@ public class Orders {
     }
 
     public int countDessertMenu() {
-        return (int) orders.stream()
+        return orders.stream()
                 .filter(order -> MenuCategory.DESSERT == order.getMenu().getCategory())
-                .count();
+                .mapToInt(Order::getQuantity)
+                .sum();
     }
 
     public int countMainMenu() {
-        return (int) orders.stream()
+        return orders.stream()
                 .filter(order -> MenuCategory.MAIN == order.getMenu().getCategory())
-                .count();
+                .mapToInt(Order::getQuantity)
+                .sum();
     }
 
     public boolean isTotalPriceQualifiedForEvent() {
