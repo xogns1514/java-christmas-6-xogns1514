@@ -4,8 +4,8 @@ import static christmas.util.Constant.*;
 
 import christmas.domain.Badge;
 import christmas.domain.Date;
-import christmas.domain.DiscountCalculator;
-import christmas.domain.DiscountRule;
+import christmas.service.DiscountCalculator;
+import christmas.service.DiscountRule;
 import christmas.domain.Orders;
 import christmas.error.ErrorMessage;
 import christmas.repository.DateRepository;

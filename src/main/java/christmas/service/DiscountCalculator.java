@@ -1,6 +1,10 @@
-package christmas.domain;
+package christmas.service;
 
 import static christmas.util.Constant.*;
+
+import christmas.domain.Date;
+import christmas.domain.DayType;
+import christmas.domain.Orders;
 
 public class DiscountCalculator {
 
