@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class InputValidator {
 
     private static final String REGEX = "^[0-9]+$";
-    private static final String MENU_QUANTITY_REGEX = "^\\w+-\\d+(?:,\\w+-\\d+)*\\s*$";
+    private static final String MENU_QUANTITY_REGEX = "^[가-힣]+-\\d+(?:,[가-힣]+-\\d+)*$";
 
 
     public static void validateDayInput(String input, String errorMessage) {
