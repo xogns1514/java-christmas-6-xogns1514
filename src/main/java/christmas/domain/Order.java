@@ -23,7 +23,10 @@ public class Order {
         return quantity;
     }
 
-    public int getTotalPrice() {return menu.getPrice() * quantity;}
+    public int getTotalPrice() {
+        return menu.getPrice() * quantity;
+    }
+
     @Override
     public String toString() {
         return String.format("%s %d개", menu.getName(), quantity);

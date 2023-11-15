@@ -70,7 +70,8 @@ public class OutputView {
 
     public static void outputDiscountBenefit(Map<String, Integer> benefitResult) {
         benefitResult.forEach((discountName, discountAmount) ->
-                System.out.printf(OutputMessage.OUTPUT_DISCOUNT_MESSAGE.message, discountName, formatter.format(discountAmount)));
+                System.out.printf(OutputMessage.OUTPUT_DISCOUNT_MESSAGE.message, discountName,
+                        formatter.format(discountAmount)));
         System.out.println();
     }
 

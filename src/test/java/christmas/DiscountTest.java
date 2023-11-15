@@ -89,7 +89,7 @@ public class DiscountTest {
                 new Order(new Menu("TestMenu1", 10000, MenuCategory.MAIN), 1),
                 new Order(new Menu("TestMenu2", 50000, MenuCategory.MAIN), 1),
                 new Order(new Menu("TestMenu1", 60000, MenuCategory.MAIN), 1)
-                ));
+        ));
 
         int discount = DiscountCalculator.calculateFreeGift(day, orders);
 
